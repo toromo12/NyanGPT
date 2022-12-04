@@ -29,7 +29,13 @@ function ChatItem({ index, text, setIsAnimating }: ChatItemProps) {
         display: "flex",
         gap: "16px",
         alignItems: "center",
-        margin: "64px 32px",
+        padding: "64px 32px",
+        borderRadius: "8px",
+        ...(!isUser
+          ? {
+              backgroundColor: "rgb(70, 70, 80)",
+            }
+          : {}),
       }}
     >
       {isUser ? <MeIcon /> : <img src="/icon.png" width="32px" height="32px" />}

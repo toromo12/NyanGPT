@@ -35,6 +35,36 @@ function App() {
   return (
     <>
       <Container ref={ref}>
+        {texts.length === 0 && (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+              height: "100vh",
+              width: "100%",
+              fontSize: "3rem",
+            }}
+          >
+            <Box>NyanGPT</Box>
+            <Box
+              sx={{
+                fontSize: "1rem",
+                marginTop: "8px",
+                padding: "16px",
+                borderRadius: "8px",
+                backgroundColor: "rgb(60, 65, 80)",
+                color: "rgb(235, 235, 240)",
+              }}
+            >
+              <div>例</div>
+              <div>&nbsp;</div>
+              <div>「愛とはなんですか？」</div>
+              <div>「なぜ戦争はなくならないのですか？」</div>
+            </Box>
+          </Box>
+        )}
         <Chat {...{ texts, setIsAnimating }} />
         <form onSubmit={handleSubmit}>
           <Box sx={{ position: "fixed", bottom: "24px", width }}>
