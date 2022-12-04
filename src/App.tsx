@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import Chat from "./components/Chat";
+import Input from "./components/Input";
 
 function App() {
   return (
-    <div className="App">
-
+    <div>
+      <Chat />
+      <Input />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
