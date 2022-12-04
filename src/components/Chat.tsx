@@ -1,15 +1,19 @@
 import React from "react";
 
-function Chat() {
+type Props = {
+  texts: string[];
+};
+
+function Chat({ texts }: Props) {
   return (
-    <div>
-      <div>
-        ICON
-      </div>
-      <div>
-        CONTENTS
-      </div>
-    </div>
+    <>
+      {texts.map((text, index) => (
+        <div key={index} style={{ display: "flex", gap: "16px" }}>
+          <div>ICON</div>
+          <div>{text}</div>
+        </div>
+      ))}
+    </>
   );
 }
 
