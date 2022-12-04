@@ -3,13 +3,14 @@ import { useMeasure } from "react-use";
 import Chat from "./components/Chat";
 import Input from "./components/Input";
 import { FormEvent, useState } from "react";
+import { NYAAS } from "./const";
 
 function App() {
   const [ref, { width }] = useMeasure<HTMLDivElement>();
   const [isLoading, setIsLoading] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [text, setText] = useState("");
-  const [texts, setTexts] = useState<string[]>(["test", "test3"]);
+  const [text, setText] = useState("愛とはなんですか？");
+  const [texts, setTexts] = useState<string[]>([]);
 
   const withLoading = (func: () => void) => {
     setIsLoading(true);
@@ -25,7 +26,8 @@ function App() {
 
     withLoading(() => {
       setIsAnimating(true);
-      setTexts((prev) => [...prev, text]);
+      const nya = NYAAS[Math.floor(Math.random() * NYAAS.length)];
+      setTexts((prev) => [...prev, text, nya]);
       setText("");
     });
   };

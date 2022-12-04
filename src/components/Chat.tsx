@@ -14,8 +14,6 @@ function ChatItem({ index, text, setIsAnimating }: ChatItemProps) {
   const [isCompleted, setIsCompleted] = useState(false);
   const fixedText = useMemo(() => {
     if (isUser) {
-      setIsAnimating(false);
-      setIsCompleted(true);
       return text;
     }
     if (isCompleted) {
@@ -41,6 +39,7 @@ function ChatItem({ index, text, setIsAnimating }: ChatItemProps) {
         <Typewriter
           onInit={(typewriter) => {
             typewriter
+              .pauseFor(2000 + Math.random() * 3000)
               .typeString(text)
               .callFunction(() => {
                 setIsAnimating(false);
