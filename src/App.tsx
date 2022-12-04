@@ -2,29 +2,41 @@ import { Box, Container } from "@mui/material";
 import { useMeasure } from "react-use";
 import Chat from "./components/Chat";
 import Input from "./components/Input";
-import { FormEvent, useCallback, useState } from "react";
+import { FormEvent, useState } from "react";
 
 function App() {
   const [ref, { width }] = useMeasure<HTMLDivElement>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [text, setText] = useState("");
-  const [texts, setTexts] = useState<string[]>([]);
+  const [texts, setTexts] = useState<string[]>(["test", "test3"]);
 
-  const handleSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+  const withLoading = (func: () => void) => {
+    setIsLoading(true);
+    func();
+    setIsLoading(false);
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isLoading || isAnimating) {
+      return;
+    }
+
+    withLoading(() => {
+      setIsAnimating(true);
       setTexts((prev) => [...prev, text]);
       setText("");
-    },
-    [setTexts, setText, text]
-  );
+    });
+  };
 
   return (
     <>
       <Container ref={ref}>
-        <Chat {...{ texts }} />
+        <Chat {...{ texts, setIsAnimating }} />
         <form onSubmit={handleSubmit}>
           <Box sx={{ position: "fixed", bottom: "24px", width }}>
-            <Input {...{ text, setText }} />
+            <Input {...{ text, setText, isLoading }} />
           </Box>
         </form>
       </Container>

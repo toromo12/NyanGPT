@@ -5,9 +5,10 @@ import { useCallback } from "react";
 type Props = {
   text: string;
   setText: (text: string) => void;
+  isLoading: boolean;
 };
 
-function Input({ text, setText }: Props) {
+function Input({ text, setText, isLoading }: Props) {
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
       setText(event.target.value);
@@ -23,6 +24,7 @@ function Input({ text, setText }: Props) {
       }}
       value={text}
       onChange={handleChange}
+      disabled={isLoading}
     />
   );
 }
