@@ -4,6 +4,7 @@ import Chat from "./components/Chat";
 import Input from "./components/Input";
 import { FormEvent, useState } from "react";
 import { NYAAS } from "./const";
+import "@fontsource/noto-sans-jp";
 
 function App() {
   const [ref, { width }] = useMeasure<HTMLDivElement>();
@@ -34,7 +35,12 @@ function App() {
 
   return (
     <>
-      <Container ref={ref}>
+      <Container
+        ref={ref}
+        sx={{
+          fontFamily: '"Noto Sans JP"',
+        }}
+      >
         {texts.length === 0 && (
           <Box
             sx={{
