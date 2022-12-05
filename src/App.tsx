@@ -1,4 +1,6 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, IconButton } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import { useMeasure } from "react-use";
 import Chat from "./components/Chat";
 import Input from "./components/Input";
@@ -41,6 +43,7 @@ function App() {
       <Container
         ref={ref}
         sx={{
+          position: "relative",
           fontFamily: '"Noto Sans JP"',
           marginBottom: `${inputHeight + BOTTOM_MARGIN + 12}px`,
         }}
@@ -92,6 +95,38 @@ function App() {
             />
           </Box>
         </form>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "24px",
+            left: "-72px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div>
+            <IconButton>
+              <a
+                href="https://github.com/toromo12/NyanGPT"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitHubIcon sx={{ color: "rgb(235, 235, 240)" }} />
+              </a>
+            </IconButton>
+          </div>
+          <div>
+            <IconButton>
+              <a
+                href="https://twitter.com/toromo12"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <TwitterIcon sx={{ color: "rgb(235, 235, 240)" }} />
+              </a>
+            </IconButton>
+          </div>
+        </Box>
       </Container>
     </>
   );
