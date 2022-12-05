@@ -22,8 +22,8 @@ function App() {
     setIsLoading(false);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (e: FormEvent<HTMLFormElement> | null) => {
+    e && e.preventDefault();
     if (isLoading || isAnimating) {
       return;
     }
@@ -82,7 +82,14 @@ function App() {
             ref={inputRef}
             sx={{ position: "fixed", bottom: `${BOTTOM_MARGIN}px`, width }}
           >
-            <Input {...{ text, setText, isLoading }} />
+            <Input
+              {...{
+                text,
+                setText,
+                isLoading,
+                handleClick: () => handleSubmit(null),
+              }}
+            />
           </Box>
         </form>
       </Container>
