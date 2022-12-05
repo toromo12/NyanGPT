@@ -6,8 +6,11 @@ import { FormEvent, useState } from "react";
 import { NYAAS } from "./const";
 import "@fontsource/noto-sans-jp";
 
+const BOTTOM_MARGIN = 24;
+
 function App() {
   const [ref, { width }] = useMeasure<HTMLDivElement>();
+  const [inputRef, { height: inputHeight }] = useMeasure<HTMLDivElement>();
   const [isLoading, setIsLoading] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [text, setText] = useState("愛とはなんですか？");
@@ -39,6 +42,7 @@ function App() {
         ref={ref}
         sx={{
           fontFamily: '"Noto Sans JP"',
+          marginBottom: `${inputHeight + BOTTOM_MARGIN + 12}px`,
         }}
       >
         {texts.length === 0 && (
@@ -48,7 +52,6 @@ function App() {
               alignItems: "center",
               justifyContent: "center",
               flexDirection: "column",
-              height: "100vh",
               width: "100%",
               fontSize: "3rem",
             }}
@@ -73,7 +76,10 @@ function App() {
         )}
         <Chat {...{ texts, setIsAnimating }} />
         <form onSubmit={handleSubmit}>
-          <Box sx={{ position: "fixed", bottom: "24px", width }}>
+          <Box
+            ref={inputRef}
+            sx={{ position: "fixed", bottom: `${BOTTOM_MARGIN}px`, width }}
+          >
             <Input {...{ text, setText, isLoading }} />
           </Box>
         </form>
