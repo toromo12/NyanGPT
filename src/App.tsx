@@ -52,15 +52,16 @@ function App() {
               alignItems: "center",
               justifyContent: "center",
               flexDirection: "column",
+              height: "100vh",
               width: "100%",
-              fontSize: "3rem",
+              fontSize: "3.4rem",
             }}
           >
             <Box>NyanGPT</Box>
             <Box
               sx={{
                 fontSize: "1rem",
-                marginTop: "8px",
+                marginTop: "24px",
                 padding: "16px",
                 borderRadius: "8px",
                 backgroundColor: "rgb(60, 65, 80)",
@@ -71,6 +72,7 @@ function App() {
               <div>&nbsp;</div>
               <div>「愛とはなんですか？」</div>
               <div>「なぜ戦争はなくならないのですか？」</div>
+              <div>&nbsp;</div>
             </Box>
           </Box>
         )}
