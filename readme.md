@@ -13,7 +13,7 @@ Q. What is this application?
 
 A. Meow. (This is a story application based on ChatGPT.)
 
-## Install, Run
+## インストールと実行
 
 ```sh
 npm i
